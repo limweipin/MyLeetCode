@@ -1,0 +1,3 @@
+First use permutation bt when the len of number ios large, permutation is taking too long.
+Next try is to build a string alterantely, let say abaaafg, a+b+a+f+a+g+a, but got alot limitation and condition need to consider and failed in some testcase.
+Finally use the concept of arrray filling, create a empty array and a pointer, insert the maimum character first alternately. Use around 3-4hour

@@ -1,0 +1,45 @@
+import operator
+
+class Solution(object):
+    def reorganizeString(self, S):
+        unique_char = list(set(S))
+        double = self.make_adjacent(unique_char)
+        char_occu = self.calc_char_occurence(S,unique_char)
+        result = self.build_str(char_occu,unique_char,S)
+        for ea_double in double:
+            adjacent = False
+            if ea_double in result:
+                adjacent = True
+                return ''
+        return result
+
+    
+    def build_str(self,char_occu,unique_char,S):
+        string = ''
+        prev_max_char = ''
+        max_char = ''
+        for i in range(len(S)):
+            for k, v in char_occu.items():
+                if v == max(char_occu.values()) and k != prev_max_char:
+                    max_char = k
+
+            string = string + max_char
+            char_occu[max_char] = char_occu[max_char] - 1
+            
+        print string
+        return string
+
+    def calc_char_occurence(self,S,unique_char):
+        result = {}
+        for ea_char in unique_char:
+            result[ea_char] = S.count(ea_char)
+        return result
+
+    def make_adjacent(self,my_list):
+        output = []
+        for val in my_list:
+            output.append(val*2)
+        return output
+
+            
+Solution().reorganizeString('aaba')
